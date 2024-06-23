@@ -1,30 +1,21 @@
 > Copyright 2023,2024 Maël THOMAS-QUILLÉVÉRÉ. L'ensemble de ce dépot est soumis à la licence AGPL3.
 
-Ce dépôt contient deux sites Web : [cartes.app](https://cartes.app) et [futur.eco](https://futur.eco). 
+Ce dépôt contient le code du site Web [futur.eco](https://futur.eco).
 
-## 🆕 🗺️ Cartes
-
-Les développements de 2024 se concentrent sur une nouvelle application Web de cartes généralistes et libres, avec une attention particulière sur les itinéraires pour aider les gens à voyager tout en respectant la planète. 
-
-Le développement se fait dans le dossier app/voyage (Voyage, c'était le nom du projet avant que ça ne devienne Cartes). 
-
-Lisez [la documentation de Voyage](https://github.com/laem/futureco/blob/master/app/voyage/README.md).
-
-Découvrez [nos motivations](https://futur.eco/blog/un-beau-voyage) et les dernières nouveautés dans [le blog](https://futur.eco/blog).
-
-Pour les devs : la peinture est fraîche. Mon objectif à ce stade n'est pas encore de faire une base de code propre et accessible à la contribution, mais d'explorer un certain nombre de chemins, d'avoir la première centaine de milliers d'utilisateurs. Ensuite, l'appli se transformera en plateforme pour accueillir les contributions :) 
+> À noter, les développements de 2024 se concentrent sur une nouvelle application Web de cartes généralistes et libres, avec une attention particulière sur les itinéraires pour aider les gens à voyager tout en respectant la planète.
+> À terme, les calculateurs futureco concernant la mobilité, l'audience principale du site en 2024, seront intégrés dans cartes.app, au plus près du besoin du grand public.
 
 ## Les calculateurs carbone futureco
 
-> La partie historique du site continue d'être disponible, et servie au grand public via les articles du site bonpote.com. Dans un second temps, elles seront fusionnées dans l'application de cartes.
+> Cette partie historique du site continue d'être disponible et maintenue, et servie au grand public via les articles du site bonpote.com. Dans un second temps, elles seront fusionnées dans l'application de cartes.
 
 La catastrophe climatique n'est plus une menace lointaine et incertaine, c'est une actualité. Comment éviter le pire ? Chaque aspect de notre vie moderne a un impact.
 
 Or, aujourd'hui, c'est très difficile de le connaître : les données sont éparpillées, souvent dans des articles de presse sans source. Des simulateurs et modèles d'impact carbone existent, mais aucun ne répond à ces priorités :
 
--   l'interface doit s'adresser au grand public. Balancer des kgCO2e sans explication n'est pas compréhensible
--   le code doit être ouvert
--   le code doit être lisible, critiquable, modifiable.
+- l'interface doit s'adresser au grand public. Balancer des kgCO2e sans explication n'est pas compréhensible
+- le code doit être ouvert
+- le code doit être lisible, critiquable, modifiable.
 
 Sur ce dépôt, c'est le code du site en Javascript. Tout le contenu et les discussions autour des contribution s sur un autre dépot : [futureco-data](https://github.com/laem/futureco-data).
 
