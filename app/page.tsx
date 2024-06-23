@@ -1,5 +1,5 @@
 import { getRules } from '@/providers/getRules'
-import Wiki from '@/app/(futureco)/wiki/Wiki'
+import Wiki from '@/app/wiki/Wiki'
 
 export default async function Page() {
 	const rules = await getRules('futureco')

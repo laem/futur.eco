@@ -1,6 +1,6 @@
-import nationalData from '@/app/(futureco)/national/data.yaml'
+import nationalData from '@/app/national/data.yaml'
 import { utils } from 'publicodes'
-import voyageRules from '@/app/(futureco)/cout-voiture/data/rules.ts'
+import voyageRules from '@/app/cout-voiture/data/rules.ts'
 
 const lines = [
 	'https://futur.eco',
