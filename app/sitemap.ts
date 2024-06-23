@@ -1,6 +1,7 @@
 import nationalData from '@/app/national/data.yaml'
 import { utils } from 'publicodes'
 import voyageRules from '@/app/cout-voiture/data/rules.ts'
+import { MetadataRoute } from 'next'
 
 const lines = [
 	'https://futur.eco',
@@ -50,7 +51,7 @@ const encodeRuleName = (name) =>
 		.replace(/-/g, '\u2011') // replace with a insecable tiret to differenciate from space
 		.replace(/\s/g, '-')
 
-export default async function sitemap() {
+export default async function sitemap(): MetadataRoute.Sitemap {
 	const asyncResults = await getResults(),
 		results = [...asyncResults, ...nationalLines, ...voyageLines]
 
