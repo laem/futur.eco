@@ -95,7 +95,11 @@ const RuleList = ({ rules }) => (
 								/>
 							) : rule.image ? (
 								<Image
-									src={'/' + rule.image}
+									src={
+										rule.image.startsWith('http')
+											? rule.image
+											: '/' + rule.image
+									}
 									width={'100'}
 									height={'100'}
 									style={css`
