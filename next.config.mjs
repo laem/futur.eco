@@ -15,6 +15,14 @@ const nextConfig = {
 	experimental: {
 		reactCompiler: true,
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'cartes.app',
+			},
+		],
+	},
 	serverComponentsExternalPackages: ['publicodes'],
 	compiler: {
 		styledComponents: true,
