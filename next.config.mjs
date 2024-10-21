@@ -53,6 +53,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: '/voyage',
+				destination: 'https://cartes.app',
+				permanent: true,
+			},
+			{
 				source: '/ferry',
 				destination: '/simulateur/transport/ferry/empreinte-du-voyage',
 				permanent: true,
