@@ -131,7 +131,7 @@ Quelques remarques diverses sur la différence entre allocation poids vs volume,
 
 En termes de méthode, nous allons dans un premier temps baser le calcul sur un bateau commercial choisi pour sa représentativité supposée et la disponibilité publique de ses informations : plans ("deck plans") détaillés, informations sur les commerces, photos des cabines, etc.
 
-Sous réserve de disponibilité de ces informations, il semble qu'en se basant sur les données publiques des ferries (largement détaillées sur wikipedia déjà) et la base de donnée exposée par greenferries.org, on pourrait faire des calculs propres à chaque bateau. Cela nécessiterait un gros travail, mais loin d'être démesuré par rapport à l'enjeu, chaque bateau étant un immense bâtiment plus peuplé que 70% des communes françaises, qui ont pourtant toutes leur cadastre, etc.
+Sous réserve de disponibilité de ces informations, il semble qu'en se basant sur les données publiques des ferries (largement détaillées sur wikipedia déjà) et la base de donnée exposée par greenferries.netlify.app, on pourrait faire des calculs propres à chaque bateau. Cela nécessiterait un gros travail, mais loin d'être démesuré par rapport à l'enjeu, chaque bateau étant un immense bâtiment plus peuplé que 70% des communes françaises, qui ont pourtant toutes leur cadastre, etc.
 
 Mesurer le volume de chaque service à bord et le comparer au [tonnage UMS net](<https://fr.wikipedia.org/wiki/Tonnage#Tonnage_net_(NRT)>), qui contrairement à son nom représente le volume commercial disponible ? Ça me semble peut-être plus risqué que de le mesurer, car c'est un standard qui semble être utilisé pour la taxation, pas destiné à cela. On apprend notamment sur wikipedia que la mesure n'est pas linéaire (!).
 
@@ -153,7 +153,7 @@ Toujours est-il que les ponts actuellement utilisés pour le fret et les véhicu
 
 Un autre exemple de limitation, c'est la sécurité sur le bateau : un ferry qui va en Corse et accueille 1500 passagers max, peut-il en accueillir 3000 tout en respectant les lois et les principes de sécurité, en supposant évidemment des changements de configuration à bord ? Il faudrait analyser ces seuils.
 
-En regardant la ligne Marseille-Ajaccio sur [le précieux greenferries.org](https://www.greenferries.org/routes/marseille-fr-ajaccio-fr/), on peut remarquer que le nombre de passagers max varie entre 544 (pour 120 véhicules passager) et 2000 (pour 560 véhicules passager) !
+En regardant la ligne Marseille-Ajaccio sur [le précieux https://greenferries.netlify.app](https://greenferries.netlify.app/routes/marseille-fr-ajaccio-fr/), on peut remarquer que le nombre de passagers max varie entre 544 (pour 120 véhicules passager) et 2000 (pour 560 véhicules passager) !
 
 ---Fin de l'introduction---
 
@@ -223,7 +223,7 @@ Hypothèses :
 > -   néglige l'impact d'une cargaison moins lourde sur la conso
 > -   pourquoi pas plus de 28 kn ? Au-delà, ce sont des NGV, et ils semblent définitivement abandonnés en raison de la consommation excessive de carburant, voir [wikipedia](https://fr.wikipedia.org/wiki/Navire_à_grande_vitesse#Problématique_des_NGV).
 
-Ce modèle simple semble valider l'ordre de grandeur de consommation et donc d'empreinte climat globale du bateau, les 625kgCO2e/mille (le tableur donne 445kg) de https://www.greenferries.org/ships/jean-nicoli-9161948 (vitesse moyenne de 31km/h donc ~17 noeuds mais non linéaire en fonction de la vitesse).
+Ce modèle simple semble valider l'ordre de grandeur de consommation et donc d'empreinte climat globale du bateau, les 625kgCO2e/mille (le tableur donne 445kg) de https://greenferries.netlify.app//ships/jean-nicoli-9161948 (vitesse moyenne de 31km/h donc ~17 noeuds mais non linéaire en fonction de la vitesse).
 
 ## Autres paramètres
 
@@ -247,7 +247,7 @@ Nous avons la chance d'être dans l'Union Européenne qui a imposé un cadre dé
 
 Détails :
 
--   https://www.greenferries.org/doc/computed_stats/
+-   https://greenferries.netlify.app/doc/computed_stats/
 -   quelques détails du calcul en annexe I https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R0757-20161216
 -   et ici C.2.9. Method for determining the split of fuel consumption into freight and passenger part (for ro-pax ships only): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32016R1927
 -   qui semble renvoyer vers la norme nf-en-16258 https://www.boutique.afnor.org/fr-fr/norme/nf-en-16258/methodologie-pour-le-calcul-et-la-declaration-de-la-consommation-denergie-e/fa163709/1306#AreasStoreProductsSummaryView, donc le choix de la méthode (par m² ou par kg) doit être fait et indiqué pour pouvoir comparer les résultats
@@ -510,7 +510,7 @@ Simplement multiplier par 30g / tonne, une donnée ADEME, méthode simple mais q
 
 La publication Deltamarin, table 20, citée ci-dessus, laisse bien entendre qu'on peut multiplier l'EEDI par le poids. Donc qu'on pourrait peut-être le faire sur l'EIV aussi et obtenir l'empreinte d'un billet passager indépendamment du fret.
 
-Peut-on donc carrément utiliser le facteur de "technical efficiency" (EIV) des bateaux [de la base Thetis indexée par Greenferries](https://www.greenferries.org/doc/technical_efficiency/) ? Ce serait ultra simple. Le bateau [Jean Nicoli à 6g](https://www.greenferries.org/ships/jean-nicoli-9161948). Probablement très lié à la vitesse et à l'âge du bateau.
+Peut-on donc carrément utiliser le facteur de "technical efficiency" (EIV) des bateaux [de la base Thetis indexée par Greenferries](https://www.greenferries.netlify.app/doc/technical_efficiency/) ? Ce serait ultra simple. Le bateau [Jean Nicoli à 6g](https://www.greenferries.netlify.app/ships/jean-nicoli-9161948). Probablement très lié à la vitesse et à l'âge du bateau.
 
 > They are theoretical measures: they rely on applying formulas based on the characteristics of a ship, not on experimental measures.
 
@@ -526,18 +526,18 @@ Comment l'estimer ? Peut-être simplement via le tonnage à vide du bateau vs ch
 
 ### À partir des données Greenferries / Thetis-MRV
 
-L'initiative greenferries.org est un site qui expose de façon salvatrice les données obligatoires de la loi Thetis-MRV. Mais reste à déterminer si les facteurs d'émission calculés et présentés sont utilisables dans notre cas d'usage. Or, la réponse est plutôt non.
+L'initiative greenferries.netlify.app est un site qui expose de façon salvatrice les données obligatoires de la loi Thetis-MRV. Mais reste à déterminer si les facteurs d'émission calculés et présentés sont utilisables dans notre cas d'usage. Or, la réponse est plutôt non.
 
 Comment se fait-il qu'une telle différence sur même chemin Marseille Ajaccio ?
 
-https://www.greenferries.org/ships/mega-andrea-8306498/
-vs https://www.greenferries.org/ships/jean-nicoli-9161948/
+https://www.greenferries.netlify.app/ships/mega-andrea-8306498/
+vs https://www.greenferries.netlify.app/ships/jean-nicoli-9161948/
 
-Il suffit de prendre une route et de comparer le 1er tableau : rien ne va https://www.greenferries.org/routes/toulon-fr-ajaccio-fr, même pour la série de Mega Express.
+Il suffit de prendre une route et de comparer le 1er tableau : rien ne va https://www.greenferries.netlify.app/routes/toulon-fr-ajaccio-fr, même pour la série de Mega Express.
 
 Il semble y avoir une corrélation vitesse - kg·CO₂/n.mile.
 
-Voir les mega express qui vont plus vite que d'autres, ou encore le [Lota](https://www.greenferries.org/ships/pascal-lota-9365398) qui va à 38 km/h.
+Voir les mega express qui vont plus vite que d'autres, ou encore le [Lota](https://www.greenferries.netlify.app/ships/pascal-lota-9365398) qui va à 38 km/h.
 
 **La vitesse** est un paramètre important dont on dispose via greenferries pour chaque bateau (et qu'on peut aussi calculer simplement trajet par trajet) ** mais qui n'explique pas l'immense variabilité** de l'attribution fret / passagers.
 
