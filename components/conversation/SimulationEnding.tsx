@@ -1,4 +1,5 @@
 import AvionExplanation from '../AvionExplanation'
+import Animate from 'Components/ui/animate'
 import Emoji from '../Emoji'
 
 const ShareButton = dynamic(() => import('Components/ShareButton'), {
@@ -22,6 +23,7 @@ const SimulationEnding = ({
 	const coutVoitureDottedName =
 		'voyage . trajet voiture . coût trajet par personne'
 	const coutVoiture = objectives[0] === coutVoitureDottedName
+	const ferry = objectives[0] === 'transport . ferry . empreinte du voyage'
 	return (
 		<div style={{ textAlign: 'center' }}>
 			<>
@@ -30,6 +32,39 @@ const SimulationEnding = ({
 						<Emoji e={'🌟'} customSizeEm={3.5} />
 						<p>Vous avez terminé votre simulation. Partagez-là !</p>
 					</>
+				)}
+				{ferry && (
+					<Animate.appear delay={1}>
+						<p
+							style={{
+								color: 'var(--lighterColor)',
+								lineHeight: '1rem',
+								fontSize: '85%',
+								maxWidth: '30rem',
+								textAlign: 'center',
+								margin: '0 auto',
+								marginBottom: '.6rem',
+								marginTop: '.6rem',
+							}}
+						>
+							🐬 L'empreinte du ferry ne se résume pas au climat : écoutez cet
+							épisode de podcast pour découvrir ses conséquences sur la
+							biodiversité marine.
+						</p>
+						<iframe
+							title="Arte Radio"
+							src="https://www.arteradio.com/son/le-chant-de-l-extinction-2-3-interferences?embed"
+							width="600"
+							height="180"
+							css={`
+								max-width: 100%;
+								border: 3px solid var(--lighterColor) !important;
+								@media (min-width: 800px) {
+									height: 145px;
+								}
+							`}
+						></iframe>
+					</Animate.appear>
 				)}
 				{coutVoiture && (
 					<img
