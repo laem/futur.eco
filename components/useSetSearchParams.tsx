@@ -1,12 +1,15 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function useSetSearchParams() {
-	const router = useRouter()
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
+	const [hash, setHash] = useState('')
+	useEffect(() => {
+		setHash(window.location.hash)
+	}, [searchParams])
 
 	const createQueryString = useCallback(
 		(newSearchParams: object, clear: boolean) => {
@@ -23,14 +26,15 @@ export default function useSetSearchParams() {
 	return (
 		newSearchParams: object,
 		noPush: boolean = false,
-		clear: boolean = false
+		clear: boolean = false,
+		replace: boolean = false
 	) => {
 		const newUrl =
-			pathname +
-			'?' +
-			createQueryString(newSearchParams, clear) +
-			window.location.hash
-		if (!noPush) router.push(newUrl)
-		else return newUrl
+			pathname + '?' + createQueryString(newSearchParams, clear) + hash
+		if (!noPush) {
+			console.log('forestgreen debug new URL', newUrl)
+			if (replace) window.history.replaceState(null, '', newUrl)
+			else window.history.pushState(null, '', newUrl)
+		} else return newUrl
 	}
 }

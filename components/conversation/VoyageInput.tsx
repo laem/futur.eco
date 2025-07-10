@@ -245,7 +245,7 @@ export default function VoyageInput({
 							padding: 0 2rem 0 0;
 						`}
 					>
-						<Image src={invertIcon} />
+						<Image src={invertIcon} alt="Inverser origine et destination" />
 					</LightButton>
 				)}
 				<div>
