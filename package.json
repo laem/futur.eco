@@ -187,5 +187,5 @@
 		"yaml": "^2.0.1",
 		"yjs": "^13.5.35"
 	},
-	"packageManager": "yarn@4.2.2"
+	"packageManager": "bun@1.2.18"
 }
