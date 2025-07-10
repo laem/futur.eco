@@ -22,9 +22,11 @@ export const objectives = ['voyage . trajet voiture . coût trajet par personne'
 const rule = rules[objectives[0]]
 
 export async function generateMetadata(
-	{ params, searchParams }: Props,
+	props,
 	parent?: ResolvingMetadata
 ): Promise<Metadata> {
+	const searchParams = await props.searchParams
+
 	const dottedName = objectives[0]
 	const image =
 		Object.keys(searchParams).length === 0
@@ -43,7 +45,8 @@ export async function generateMetadata(
 	}
 }
 
-const Page = ({ searchParams }) => {
+const Page = async (props) => {
+	const searchParams = await props.searchParams
 	const iframe = searchParams.iframe != null
 	return (
 		<main>

@@ -1,27 +1,28 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { title as ruleTitle } from 'Components/utils/publicodesUtils'
 import { getRulesFromDottedName } from '@/providers/getRules'
+import Article from 'Components/Article'
+import BaseCarboneReference from 'Components/BaseCarboneReference'
+import { default as convert, default as css } from 'Components/css/convertToJs'
+import { Markdown } from 'Components/utils/markdown'
+import { title as ruleTitle } from 'Components/utils/publicodesUtils'
+import Link from 'next/link'
 import { utils } from 'publicodes'
 import Simulateur from './Simulateur'
-import Article from 'Components/Article'
-import convert from 'Components/css/convertToJs'
-import { Markdown } from 'Components/utils/markdown'
-import BaseCarboneReference from 'Components/BaseCarboneReference'
-import css from 'Components/css/convertToJs'
-import Link from 'next/link'
-import Emoji from 'Components/Emoji'
 
 type Props = {
 	params: { dottedName: string[] }
 	searchParams: { [key: string]: string | string[] | undefined }
 }
 export async function generateMetadata(
-	{ params, searchParams }: Props,
+	props,
 	parent?: ResolvingMetadata
 ): Promise<Metadata> {
+	const { dottedName: rawDottedName } = await props.params
+	const searchParams = await props.searchParams
+
 	const dottedName = utils.decodeRuleName(
-			decodeURIComponent(params.dottedName.join('/'))
+			decodeURIComponent(rawDottedName.join('/'))
 		),
 		rules = await getRulesFromDottedName(dottedName),
 		rule = rules[dottedName] || {}
@@ -45,17 +46,18 @@ export async function generateMetadata(
 	}
 }
 
-const Page = async ({
-	params: { dottedName: rawDottedName },
-	searchParams,
-}: Props) => {
+const Page = async ({ params, searchParams }) => {
+	const { dottedName: rawDottedName } = await params
+	const { iframe } = await searchParams
+
 	const dottedName = decodeURIComponent(rawDottedName.join('/'))
 	const decoded = utils.decodeRuleName(dottedName)
 	const rules = await getRulesFromDottedName(dottedName)
 	const rule = rules[decoded]
 	const text = rule.exposé?.description || rule.description
 	const title = rule.exposé?.titre || rule.titre
-	const iframe = searchParams.iframe != null
+
+	const isIframe = iframe != null
 	return (
 		<main>
 			<Simulateur
@@ -64,7 +66,7 @@ const Page = async ({
 				searchParams={searchParams}
 			/>
 			<details
-				open={!iframe}
+				open={!isIframe}
 				style={css`
 					margin-top: 1rem;
 				`}
