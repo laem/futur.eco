@@ -38,6 +38,7 @@ export default ({ children }) => {
 				? `deploy-preview-${pullRequestNumber}--`
 				: ''
 		}${rulesDomain}`
+		console.log('🟣🟣🟣', rulesURL)
 		const dataBranch = branch || pullRequestNumber
 		if (
 			false && // To be reactivated when in a dev branch for the final work on this test section on the site, that is based on nosgestesclimat's model

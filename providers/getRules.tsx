@@ -14,7 +14,12 @@ export async function getRules(
 			? 'data.nosgestesclimat.fr/co2-model.FR-lang.fr.json'
 			: 'futureco-data.netlify.app/co2.json'
 
-	const res = await fetch('https://' + rulesDomain)
+	const url = 'https://' + rulesDomain
+
+	console.log('🟣🟣🟣', url)
+
+	const res = await fetch(url)
+
 	// The return value is *not* serialized
 	// You can return Date, Map, Set, etc.
 
