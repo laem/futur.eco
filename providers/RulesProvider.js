@@ -121,6 +121,7 @@ export default ({ children }) => {
 						([k, v]) => v && v.question
 					)
 				})
+				.catch((e) => console.log('Erreur dans le téléchargement du modèle', e))
 		}
 	}, [pathname, branch, pullRequestNumber])
 
