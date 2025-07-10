@@ -1,6 +1,3 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-
 export const humanWeight = (possiblyNegativeValue, concise = false) => {
 	const v = Math.abs(possiblyNegativeValue)
 	const [raw, unit] =
@@ -47,9 +44,9 @@ const HumanWeight = ({ nodeValue, overrideValue }) => {
 			</span>
 		</span>
 	)
-};
+}
 
-export default HumanWeight;
+export default HumanWeight
 
 const OverrideBlock = ({ value: rawValue }) => {
 	const [value, unit] = humanWeight(rawValue)

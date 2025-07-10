@@ -15,9 +15,9 @@ export async function getRules(
 			? 'data.nosgestesclimat.fr/co2-model.FR-lang.fr.json'
 			: dataUrl
 
-	const url = 'https://' + rulesDomain
-
-	console.log('🟣🟣🟣', url)
+	const url = rulesDomain.startsWith('http')
+		? rulesDomain
+		: 'https://' + rulesDomain
 
 	const res = await fetch(url)
 
