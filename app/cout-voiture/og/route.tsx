@@ -6,7 +6,7 @@ import { ImageResponse } from 'next/og'
 import Publicodes, { formatValue } from 'publicodes'
 import Piece from '../Piece'
 import voitureRules from '../data/rules'
-import dataUrl from '@/components/data'
+import dataUrl from '@/components/dataUrl'
 
 const futurecoRules = dataUrl
 
