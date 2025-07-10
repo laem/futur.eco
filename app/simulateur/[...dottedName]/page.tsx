@@ -46,9 +46,10 @@ export async function generateMetadata(
 	}
 }
 
-const Page = async ({ params, searchParams }) => {
-	const { dottedName: rawDottedName } = await params
-	const { iframe } = await searchParams
+const Page = async (props) => {
+	const { dottedName: rawDottedName } = await props.params
+	const searchParams = await props.searchParams
+	const { iframe } = searchParams
 
 	const dottedName = decodeURIComponent(rawDottedName.join('/'))
 	const decoded = utils.decodeRuleName(dottedName)
