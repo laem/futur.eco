@@ -17,7 +17,11 @@ import {
 	Trajectoire,
 } from 'Components/GameOver'
 
-const Page = async ({ params: { diapo } }) => {
+const Page = async (props) => {
+	const params = await props.params
+
+	const { diapo } = params
+
 	const rules = await getRules('NGC')
 	switch (diapo) {
 		case 'perdu':

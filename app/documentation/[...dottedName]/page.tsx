@@ -17,9 +17,12 @@ type Props = {
 	searchParams: { [key: string]: string | string[] | undefined }
 }
 export async function generateMetadata(
-	{ params, searchParams }: Props,
+	props,
 	parent?: ResolvingMetadata
 ): Promise<Metadata> {
+	const searchParams = await props.searchParams
+	const params = await props.params
+
 	const dottedName = utils.decodeRuleName(
 			decodeURIComponent(params.dottedName.join('/'))
 		),
@@ -45,10 +48,11 @@ export async function generateMetadata(
 	}
 }
 
-const Page = async ({
-	params: { dottedName: rawDottedName },
-	searchParams,
-}: Props) => {
+const Page = async (props) => {
+	const searchParams = await props.searchParams
+	const params = await props.params
+	const { dottedName: rawDottedName } = params
+
 	const dottedName = decodeURIComponent(rawDottedName.join('/'))
 	const decoded = utils.decodeRuleName(dottedName)
 	const rules = await getRulesFromDottedName(dottedName)

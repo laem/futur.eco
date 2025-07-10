@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic'
 
-export default function National({ searchParams }) {
+export default async function National(props) {
+	const searchParams = await props.searchParams
+
 	return (
 		<Main>
 			<header>
