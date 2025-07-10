@@ -2,6 +2,7 @@ import nationalData from '@/app/national/data.yaml'
 import { utils } from 'publicodes'
 import voyageRules from '@/app/cout-voiture/data/rules.ts'
 import { MetadataRoute } from 'next'
+import dataUrl from '@/components/dataUrl'
 
 const lines = [
 	'https://futur.eco',
@@ -24,7 +25,7 @@ const nationalLines = nationalData.map(
 )
 
 const getResults = () =>
-	fetch('https://futureco-data.netlify.app/co2.json')
+	fetch(dataUrl)
 		.then((res) => res.json())
 		.then((json) => {
 			const documentationLines = Object.keys(json).map(

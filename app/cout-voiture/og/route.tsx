@@ -1,14 +1,14 @@
 import BeautifulSituation from 'Components/BeautifulSituation'
-import css from 'Components/css/convertToJs'
 import { humanWeight } from 'Components/HumanWeight'
+import css from 'Components/css/convertToJs'
 import { getSituation } from 'Components/utils/simulationUtils'
 import { ImageResponse } from 'next/og'
 import Publicodes, { formatValue } from 'publicodes'
-import CostIllustration from '../CostIllustration'
-import voitureRules from '../data/rules'
 import Piece from '../Piece'
+import voitureRules from '../data/rules'
+import dataUrl from '@/components/data'
 
-const futurecoRules = 'https://futureco-data.netlify.app/co2.json'
+const futurecoRules = dataUrl
 
 export const runtime = 'edge'
 

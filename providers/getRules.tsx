@@ -2,6 +2,7 @@ import setDefaultsToZero from './setDefaultsToZero'
 import transformRules from './transformRules'
 import voyageRules from '@/app/cout-voiture/data/rules'
 import carburantRules from '@/app/carburants/prix-a-la-pompe/rules'
+import dataUrl from '@/components/dataUrl'
 
 export async function getRules(
 	ruleSet: 'NGC' | 'futureco' | 'voyage' | 'carburants'
@@ -12,7 +13,7 @@ export async function getRules(
 	const rulesDomain =
 		ruleSet === 'NGC'
 			? 'data.nosgestesclimat.fr/co2-model.FR-lang.fr.json'
-			: 'futureco-data.netlify.app/co2.json'
+			: dataUrl
 
 	const url = 'https://' + rulesDomain
 

@@ -27,7 +27,7 @@ export default ({ children }) => {
 			(url) => pathname.indexOf(url) === 0
 		)
 			? 'data.nosgestesclimat.fr/co2-model.FR-lang.fr.json'
-			: 'futureco-data.netlify.app/co2.json'
+			: dataUrl
 
 		/* This enables loading the rules of a branch,
 		 * to showcase the app as it would be once this branch of -data  has been merged*/
