@@ -99,7 +99,7 @@ export const WikiCard = styled(Card)`
 		`
 	background: var(--lightestColor);
 	color: var(--darkColor);
-	a, h3 {color: inherit};
+	a, h3 {color: var(--darkerColor); font-weight: bold};
 	border-color: var(--darkColor);
 
 	`}
