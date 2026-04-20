@@ -26,7 +26,8 @@ const nationalLines = nationalData.map(
 
 const getResults = () => {
 	console.log('DATA', dataUrl)
-	return fetch(dataUrl)
+	// TODO TEMP  because the dataUrl fails on Dokploy. No idea why !
+	return fetch('https://api.npoint.io/041f29df3a9857859639')
 		.then((res) => res.json())
 		.then((json) => {
 			const documentationLines = Object.keys(json).map(
