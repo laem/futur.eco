@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 	title,
 	description,
 	openGraph: {
-		images: ['https://' + process.env.VERCEL_URL + '/national.png'],
+		images: ['https://' + process.env.WEBSITE_URL + '/national.png'],
 	},
 }
 

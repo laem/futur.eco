@@ -15,7 +15,7 @@ async function handler(req) {
 	const titre = searchParams.get('titre')
 	const image = searchParams.get('image')
 	const situation = JSON.parse(
-		decodeURIComponent(searchParams.get('situation'))
+		decodeURIComponent(searchParams.get('situation')),
 	)
 
 	/* error fetch
@@ -48,10 +48,10 @@ async function handler(req) {
 			displayedUnit: '€',
 		}),
 		lifeTime = newEngine.evaluate(
-			'voyage . voiture . durée standardisée'
+			'voyage . voiture . durée standardisée',
 		).nodeValue
 	const distance = newEngine.evaluate(
-		'voyage . trajet voiture . distance'
+		'voyage . trajet voiture . distance',
 	).nodeValue
 	const perKm = formatValue(
 		newEngine
@@ -60,42 +60,41 @@ async function handler(req) {
 				'voyage . trajet voiture . distance': 1,
 			})
 			.evaluate(target),
-		{ precision: 2, displayedUnit: '€ / km' }
+		{ precision: 2, displayedUnit: '€ / km' },
 	)
 	const isElec =
 		situation['voyage . voiture . motorisation']?.includes('électrique')
 
 	return new ImageResponse(
-		(
-			<div
-				style={{
-					fontSize: 100,
-					color: 'black',
-					width: '100%',
-					height: '100%',
-					textAlign: 'center',
-					justifyContent: 'center',
-					alignItems: 'center',
-					display: 'flex',
-					flexDirection: 'column',
-					background: 'white',
-				}}
-			>
-				<img
-					src={
-						(process.env.NEXT_PUBLIC_NODE_ENV === 'development'
-							? 'http://localhost:8080'
-							: 'https://' + process.env.VERCEL_URL) +
-						'/voiture/' +
-						image
-					}
-					width="1024"
-					height="683"
-					style={{ position: 'absolute', top: 0, left: 0 }}
-				/>
+		<div
+			style={{
+				fontSize: 100,
+				color: 'black',
+				width: '100%',
+				height: '100%',
+				textAlign: 'center',
+				justifyContent: 'center',
+				alignItems: 'center',
+				display: 'flex',
+				flexDirection: 'column',
+				background: 'white',
+			}}
+		>
+			<img
+				src={
+					(process.env.NEXT_PUBLIC_NODE_ENV === 'development'
+						? 'http://localhost:8080'
+						: 'https://' + process.env.WEBSITE_URL) +
+					'/voiture/' +
+					image
+				}
+				width="1024"
+				height="683"
+				style={{ position: 'absolute', top: 0, left: 0 }}
+			/>
 
-				<div
-					style={convert(`
+			<div
+				style={convert(`
 						position: absolute;
 						right: .6rem;
 						bottom: .4rem;
@@ -105,62 +104,62 @@ async function handler(req) {
 						align-items: center
 
 `)}
-				>
-					<img src="https://futur.eco/logo.svg" />
+			>
+				<img src="https://futur.eco/logo.svg" />
 
-					<span
-						style={convert(
-							`font-size: 20px; font-weight: bold; color: white; background: #185abd; padding: 0 .2rem 0 .4rem; text-align: center; `
-						)}
-					>
-						futur.eco
-					</span>
-				</div>
-				<h1
-					style={convert(`
+				<span
+					style={convert(
+						`font-size: 20px; font-weight: bold; color: white; background: #185abd; padding: 0 .2rem 0 .4rem; text-align: center; `,
+					)}
+				>
+					futur.eco
+				</span>
+			</div>
+			<h1
+				style={convert(`
 						font-size: 100;
 						top: 0; right: 2rem;
 						margin: 0;
 						position: absolute;
 						${gradientText}
 `)}
-				>
-					{titre}
-				</h1>
-				<p
-					style={convert(`
+			>
+				{titre}
+			</h1>
+			<p
+				style={convert(`
 						font-size: 30;
 						top: 6rem; right: 2rem;
 						position: absolute;
 						${gradientText}
 `)}
-				>
-					Accessible dès
-				</p>
-				<p
-					style={convert(`
+			>
+				Accessible dès
+			</p>
+			<p
+				style={convert(`
 						font-size: 80;
 						top: 14rem; right: 2rem;
 						margin: 0;
 						position: absolute;
 						${gradientText}
 `)}
-				>
-					{total}
-				</p>
-				<p
-					style={convert(`
+			>
+				{total}
+			</p>
+			<p
+				style={convert(`
 						font-size: 30;
 						top: 20rem; right: 2rem;
 						margin: 0;
 						position: absolute;
 						${gradientText}
 `)}
-				>
-					sur {lifeTime} ans
-				</p>
-				<div
-					style={convert(`
+			>
+				sur {lifeTime} ans
+			</p>
+			<div
+				style={convert(`
 
 	background: #ffffff90;
 						display: flex;
@@ -171,18 +170,18 @@ async function handler(req) {
 						position: absolute;
 						border: 2px solid #185abd
 						`)}
-				>
-					<span
-						style={convert(`
+			>
+				<span
+					style={convert(`
 						${gradientText}
 `)}
-					>
-						Soit {perKm}
-					</span>
-				</div>
+				>
+					Soit {perKm}
+				</span>
+			</div>
 
-				<div
-					style={convert(`
+			<div
+				style={convert(`
 						background: #ffffff90;
 						display: flex;
 						font-size: 30;
@@ -194,23 +193,22 @@ async function handler(req) {
 						width: 26rem;
 						text-align: right
 						`)}
-				>
-					{isElec ? 'Électricité' : 'Carburant'}, péages, achat, parking,
-					assurance, entretien, lavage, équipements, accidents, infractions,
-					carte grise
-					{isElec ? ', et bonus écologique inclus.' : '.'}
-				</div>
-
-				{false && <div style={{ fontSize: 250 }}>{emojis}</div>}
+			>
+				{isElec ? 'Électricité' : 'Carburant'}, péages, achat, parking,
+				assurance, entretien, lavage, équipements, accidents, infractions, carte
+				grise
+				{isElec ? ', et bonus écologique inclus.' : '.'}
 			</div>
-		),
+
+			{false && <div style={{ fontSize: 250 }}>{emojis}</div>}
+		</div>,
 		{
 			width: 1024,
 			height: 683,
 			// Supported options: 'twemoji', 'blobmoji', 'noto', 'openmoji', 'fluent', 'fluentFlat'
 			// Default to 'twemoji'
 			emoji: 'openmoji',
-		}
+		},
 	)
 }
 
