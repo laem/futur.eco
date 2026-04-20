@@ -10,8 +10,6 @@ import dataUrl from '@/components/dataUrl'
 
 const futurecoRules = dataUrl
 
-export const runtime = 'edge'
-
 const isVoiture = (dottedName) =>
 	dottedName === 'voyage . trajet voiture . coût trajet par personne'
 const getRules = async (dottedName) => {
@@ -54,79 +52,77 @@ export async function GET(request) {
 		[value, unit] = formatUnit(rawUnit, evaluation.nodeValue, valueWithoutUnit)
 
 	return new ImageResponse(
-		(
-			<div
-				style={{
-					display: 'flex',
-					height: '100%',
-					width: '100%',
-					alignItems: 'center',
-					justifyContent: 'center',
-					flexDirection: 'column',
-					backgroundImage: 'linear-gradient(to bottom, #dbf4ff, #fff1f1)',
-					fontSize: 100,
-					letterSpacing: -2,
-					fontWeight: 700,
-					textAlign: 'center',
-					lineHeight: 0.8,
-				}}
-			>
-				{false && isVoiture(dottedName) ? (
-					<Piece />
-				) : (
-					<div
-						style={css(`
+		<div
+			style={{
+				display: 'flex',
+				height: '100%',
+				width: '100%',
+				alignItems: 'center',
+				justifyContent: 'center',
+				flexDirection: 'column',
+				backgroundImage: 'linear-gradient(to bottom, #dbf4ff, #fff1f1)',
+				fontSize: 100,
+				letterSpacing: -2,
+				fontWeight: 700,
+				textAlign: 'center',
+				lineHeight: 0.8,
+			}}
+		>
+			{false && isVoiture(dottedName) ? (
+				<Piece />
+			) : (
+				<div
+					style={css(`
 					 font-size: 160;
 					`)}
-					>
-						{emojis}
-					</div>
-				)}
-				<div
-					style={{
-						backgroundImage:
-							'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
-						backgroundClip: 'text',
-						'-webkit-background-clip': 'text',
-						color: 'transparent',
-					}}
 				>
-					{title}
+					{emojis}
 				</div>
-				<div
-					style={css`
-						font-size: 30;
-						display: flex;
-						margin-top: 1rem;
-					`}
-				>
-					<BeautifulSituation {...{ validatedSituation, rules }} />
-				</div>
-				<div
-					style={css`
-						display: flex;
-						align-items: center;
-						margin-top: 1rem;
-					`}
-				>
-					<span>{value}</span>
-					<small
-						style={css`
-							font-size: 60;
-							margin-left: 1rem;
-						`}
-					>
-						{unit}
-					</small>
-				</div>
+			)}
+			<div
+				style={{
+					backgroundImage:
+						'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
+					backgroundClip: 'text',
+					'-webkit-background-clip': 'text',
+					color: 'transparent',
+				}}
+			>
+				{title}
 			</div>
-		),
+			<div
+				style={css`
+					font-size: 30;
+					display: flex;
+					margin-top: 1rem;
+				`}
+			>
+				<BeautifulSituation {...{ validatedSituation, rules }} />
+			</div>
+			<div
+				style={css`
+					display: flex;
+					align-items: center;
+					margin-top: 1rem;
+				`}
+			>
+				<span>{value}</span>
+				<small
+					style={css`
+						font-size: 60;
+						margin-left: 1rem;
+					`}
+				>
+					{unit}
+				</small>
+			</div>
+		</div>,
 		{
 			width: 1200,
 			height: 630,
 			// Supported options: 'twemoji', 'blobmoji', 'noto', 'openmoji', 'fluent' and 'fluentFlat'
 			// Default to 'twemoji'
 			emoji: 'openmoji',
-		}
+		},
 	)
 }

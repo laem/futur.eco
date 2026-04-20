@@ -1,8 +1,8 @@
-import nationalData from '@/app/national/data.yaml'
-import { utils } from 'publicodes'
 import voyageRules from '@/app/cout-voiture/data/rules.ts'
-import { MetadataRoute } from 'next'
+import nationalData from '@/app/national/data.yaml'
 import dataUrl from '@/components/dataUrl'
+import { MetadataRoute } from 'next'
+import { utils } from 'publicodes'
 
 const lines = [
 	'https://futur.eco',
@@ -15,35 +15,39 @@ const lines = [
 ]
 
 const voyageLines = Object.entries(voyageRules).map(
-	([k, v]) => `https://futur.eco/documentation/` + utils.encodeRuleName(k)
+	([k, v]) => `https://futur.eco/documentation/` + utils.encodeRuleName(k),
 )
 
 const nationalLines = nationalData.map(
 	(element) =>
 		'https://futur.eco/national/action/' +
-		utils.encodeRuleName(element.titre.toLowerCase())
+		utils.encodeRuleName(element.titre.toLowerCase()),
 )
 
-const getResults = () =>
-	fetch(dataUrl)
+const getResults = () => {
+	console.log('DATA', dataUrl)
+	return fetch(dataUrl)
 		.then((res) => res.json())
 		.then((json) => {
 			const documentationLines = Object.keys(json).map(
 				(dottedName) =>
-					`https://futur.eco/documentation/${encodeRuleName(dottedName)}`
+					`https://futur.eco/documentation/${encodeRuleName(dottedName)}`,
 			)
 			const simulationLines = Object.keys(json)
 				.filter(
-					(dottedName) => json[dottedName] && json[dottedName]['exposé'] != null
+					(dottedName) =>
+						json[dottedName] && json[dottedName]['exposé'] != null,
 				)
 				.map(
 					(dottedName) =>
-						`https://futur.eco/simulateur/${encodeRuleName(dottedName)}`
+						`https://futur.eco/simulateur/${encodeRuleName(dottedName)}`,
 				)
 
 			const results = [...lines, ...simulationLines, ...documentationLines]
 			return results
 		})
+		.catch((e) => console.error(e, dataUrl))
+}
 
 /* Unfortunately, we can't yet import this function from engine/rules */
 const encodeRuleName = (name) =>
