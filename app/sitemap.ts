@@ -59,7 +59,6 @@ const encodeRuleName = (name) =>
 export default async function sitemap(): MetadataRoute.Sitemap {
 	const asyncResults = await getResults(),
 		results = [...asyncResults, ...nationalLines, ...voyageLines]
-	console.log('DATA', asyncResults.length)
 
 	return results.map((el) => ({ url: el }))
 	return [
